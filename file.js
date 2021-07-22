@@ -1,72 +1,73 @@
-// 1)
-// for
-for (i = 25 ; i > -1 ; i--) {
-    console.log(i)
+// минимальное и максимальное число
+function getMin (arrayOfNumbers) {
+    let minNumber = arrayOfNumbers[0]
+
+    for (let i = 1 ; i < arrayOfNumbers.length ; i++) {
+        if (arrayOfNumbers[i] < minNumber) {
+            minNumber = arrayOfNumbers[i]
+        }
+        
+    }
+    return minNumber
 }
-// while
-let ii = 26
-while (ii > 1) {
-    ii--
-    console.log(ii)
+function getMax (arrayOfNumbers) {
+    let maxNumber = arrayOfNumbers[0]
+
+    for (i = 1 ; i < arrayOfNumbers.length ; i++) {
+        if (arrayOfNumbers[i] > maxNumber) {
+            maxNumber = arrayOfNumbers[i]
+        }
+       
+    }
+    return maxNumber
 }
-// do... while
-let iii = 26 
-do {
-    iii--
-    console.log(iii)
-} while (iii > 1)
-// 2)
-// for
-for (i = 10 ; i < 51 ; i++) {
-    if (i % 5 === 0) {
-        console.log(i)
+// среднее арифмнетическое элементов 
+const arr = [
+    12,
+    15,
+    20,
+    25,
+    59,
+    79
+]
+function getAverage(arrrayOfNumbers) {
+    let sumOfNumbers = arrrayOfNumbers[0]
+    
+    for (i = 1 ; i < arrrayOfNumbers.length ; i++) {
+        sumOfNumbers = sumOfNumbers + arrrayOfNumbers[i]
+    }
+    return sumOfNumbers / arrrayOfNumbers.length
+}
+// случайные числа от 1 до 100
+function getRandom () {
+    return Math.floor(Math.random() * 100)
+}
+// 10 случайных целых чисел
+function randomNumbers(array) {
+    for (i = 0 ; i < 11 ; i++) {
+        array.push(Math.floor(Math.random() * 10))
     }
 }
-// while
-let ii = 5
-while (ii < 50) {
-    ii++
-    if (ii % 5 === 0)
-    console.log(ii)
-}
-// do... while
-let iii = 5
-do {
-    iii++
-    if (iii % 5 ===0)
-    console.log(iii)
-} while(iii < 50)
+// Задачи на работу с массивами 
+// 1) 
+const ar1 = [1, 2, 3]
+const ar2 = [4, 5, 6]
+const ar3 = ar1.concat(ar2) 
+// 2)
+const arr1 = [3, 2, 1]
+const arrReverse = arr1.reverse()
 // 3)
-// for
-for (i = 0 ; i < 101 ; i++){
-    console.log(i + i)
-}
-// while
-let ii = 0
-while (ii < 100){
-    ii++
-    console.log(ii + ii)
-}
-// do... while
-let iii = 0 
-do {
-    iii++
-    console.log(iii + iii)
-} while (iii < 100)
-// 4)
-// do... while
-let result;
-do {
-    result = prompt("2 + 2 * 2", "")
-    
-} while (result < 6  || result > 6)
-// while
-let result2 
-while (true) {
-    let result2 = prompt("2 + 2 * 2", "")
-    if (result2 == 6) break
-}
-// for
-for (result = 0 ; result < 6 || result > 6 ;) {
-    result = prompt("2 + 2 * 2", "")
-}   
+const rr = [1, 2, 3] 
+rr.push(4, 5, 6)
+const rr2 = [1, 2, 3]
+rr2.unshift(4, 5, 6)
+// 4) 
+const arry = ["js", "css", "jq",]
+console.log(arry[0])
+arry.shift()
+console.log(arry[arry.length -1])
+arry.pop() 
+// 5) 
+const arry2 = [1, 2, 3, 4, 5]
+const arry3 = arry2.slice(-5, 3)
+const arry4 = arry2.slice(-2)
