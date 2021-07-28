@@ -1,72 +1,80 @@
-// 1)
-// for
-for (i = 25 ; i > -1 ; i--) {
-    console.log(i)
-}
-// while
-let ii = 26
-while (ii > 1) {
-    ii--
-    console.log(ii)
-}
-// do... while
-let iii = 26 
-do {
-    iii--
-    console.log(iii)
-} while (iii > 1)
-// 2)
-// for
-for (i = 10 ; i < 51 ; i++) {
-    if (i % 5 === 0) {
-        console.log(i)
+/*
+  cоздать функцию конструктор Phone 
+   у телефона есть такие свойства:%
+    модель
+    производитель
+    цена
+    цвет
+    comments (массив строк)
+    в наличии (boolean)
+    1. Создать массив с 50 телефонами (с разными данными)
+*/
+
+function Phone(model, manufacturer, price, color, inStock) {
+    this.model = model;
+    this.manufacturer = manufacturer;
+    this.price = price;
+    this.color = color;
+    this.comments = [];
+    this.inStock = inStock;
+  }
+  
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+  }
+  
+  function getPhones(amount) {
+    const newPhones = [];
+  
+    for (let i = 0; i < amount; i++) {
+      newPhones.push(
+        new Phone(
+          `Model ${i}`,
+          "Panasonic",
+          getRandomInt(5000, 50000),
+          "black",
+          Math.random() >= 0.5
+        )
+      );
     }
-}
-// while
-let ii = 5
-while (ii < 50) {
-    ii++
-    if (ii % 5 === 0)
-    console.log(ii)
-}
-// do... while
-let iii = 5
-do {
-    iii++
-    if (iii % 5 ===0)
-    console.log(iii)
-} while(iii < 50)
-// 3)
-// for
-for (i = 0 ; i < 101 ; i++){
-    console.log(i + i)
-}
-// while
-let ii = 0
-while (ii < 100){
-    ii++
-    console.log(ii + ii)
-}
-// do... while
-let iii = 0 
-do {
-    iii++
-    console.log(iii + iii)
-} while (iii < 100)
-// 4)
-// do... while
-let result;
-do {
-    result = prompt("2 + 2 * 2", "")
-    
-} while (result < 6  || result > 6)
-// while
-let result2 
-while (true) {
-    let result2 = prompt("2 + 2 * 2", "")
-    if (result2 == 6) break
-}
-// for
-for (result = 0 ; result < 6 || result > 6 ;) {
-    result = prompt("2 + 2 * 2", "")
-}   
+  
+    return newPhones;
+  }
+  
+  const phones = getPhones(50);
+  
+  console.table(phones);
+  
+// 1)
+let sum = 0
+phones.forEach(phone => {
+    if (phone.inStock === true) {
+        sum++
+    }
+})
+console.log(sum)
+// 1.1)
+
+phones.forEach(phone => {
+    const message = phone.inStock ? "в наличии" : "не в наличии"
+    console.log(`${phone.manufacturer} ${phone.model} со стоимостью ${phone.price} ${message}`)
+})
+//2)
+
+const stock = phones.filter(phone => phone.inStock === true)
+//3
+
+const blackFriday = stock.map(stock => {
+    if (stock.price > 30000) {
+        stock.price = Math.round(stock.price * 0.7)
+    }
+    return stock
+})
+
+//1. 
+
+const sortedArray = phones.sort(function(firstPhone, secondPhone) {
+    return secondPhone.price - firstPhone.price;
+})
