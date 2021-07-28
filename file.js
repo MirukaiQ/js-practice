@@ -1,15 +1,3 @@
-/*
-  cоздать функцию конструктор Phone 
-   у телефона есть такие свойства:%
-    модель
-    производитель
-    цена
-    цвет
-    comments (массив строк)
-    в наличии (boolean)
-    1. Создать массив с 50 телефонами (с разными данными)
-*/
-
 function Phone(model, manufacturer, price, color, inStock) {
     this.model = model;
     this.manufacturer = manufacturer;
