@@ -1,73 +1,43 @@
-// минимальное и максимальное число
-function getMin (arrayOfNumbers) {
-    let minNumber = arrayOfNumbers[0]
-
-    for (let i = 1 ; i < arrayOfNumbers.length ; i++) {
-        if (arrayOfNumbers[i] < minNumber) {
-            minNumber = arrayOfNumbers[i]
-        }
-        
+function MyArrayProto() {
+    this.sleep = function() {
+        return "zzzzzzzzzzzzzzzzzz"
     }
-    return minNumber
 }
-function getMax (arrayOfNumbers) {
-    let maxNumber = arrayOfNumbers[0]
-
-    for (i = 1 ; i < arrayOfNumbers.length ; i++) {
-        if (arrayOfNumbers[i] > maxNumber) {
-            maxNumber = arrayOfNumbers[i]
-        }
-       
-    }
-    return maxNumber
-}
-// среднее арифмнетическое элементов 
-const arr = [
-    12,
-    15,
-    20,
-    25,
-    59,
-    79
-]
-function getAverage(arrrayOfNumbers) {
-    let sumOfNumbers = arrrayOfNumbers[0]
     
-    for (i = 1 ; i < arrrayOfNumbers.length ; i++) {
-        sumOfNumbers = sumOfNumbers + arrrayOfNumbers[i]
+
+function UserProto(name, age, isMale) {
+    this.name = name,
+    this.age = age,
+    this.isMale = isMale
+}
+
+const arrayProto = new MyArrayProto()
+
+UserProto.prototype = arrayProto
+
+const user1 = new UserProto("Alexey", 27, true)
+
+
+function MyArray () {
+    this.length = 0;
+    this.push = function() {
+        for (let i = 0 ; i < arguments.length ; i++ ) {
+            this[this.length++] = arguments[i];
+        }
+        return this.length;
     }
-    return sumOfNumbers / arrrayOfNumbers.length
-}
-// случайные числа от 1 до 100
-function getRandom () {
-    return Math.floor(Math.random() * 100)
-}
-// 10 случайных целых чисел
-function randomNumbers(array) {
-    for (i = 0 ; i < 11 ; i++) {
-        array.push(Math.floor(Math.random() * 10))
+    this.pop = function() {
+        this.length--
+        
+        return this.length
     }
 }
-// Задачи на работу с массивами 
-// 1) 
-const ar1 = [1, 2, 3]
-const ar2 = [4, 5, 6]
-const ar3 = ar1.concat(ar2) 
-// 2)
-const arr1 = [3, 2, 1]
-const arrReverse = arr1.reverse()
-// 3)
-const rr = [1, 2, 3] 
-rr.push(4, 5, 6)
-const rr2 = [1, 2, 3]
-rr2.unshift(4, 5, 6)
-// 4) 
-const arry = ["js", "css", "jq",]
-console.log(arry[0])
-arry.shift()
-console.log(arry[arry.length -1])
-arry.pop() 
-// 5) 
-const arry2 = [1, 2, 3, 4, 5]
-const arry3 = arry2.slice(-5, 3)
-const arry4 = arry2.slice(-2)
+const arr = new MyArray()
+
+const users = [
+    {name: "Alexey", age: 27, isMale: true, cash: 50000},
+    {name: "Sanya", age: 23, isMale: true, cash: 300},
+    {name: "Dasha", age: 18, isMale: false, cash: 4000},
+    {name: "Egor", age: 15, isMale: true, cash: 700},
+    {name: "Anna", age: 12, isMale: false, cash: 500},
+]
