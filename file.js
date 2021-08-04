@@ -1,27 +1,27 @@
 `use strict`
 class Worker {
   constructor(name, lastName, workingDay, salary) {
-    this.name = name
-    this.lastName = lastName
-    this.workingDay = workingDay
-    this.salary = salary
     if (salary  < 0) {
       throw new RangeError("Salary cannot be negative")
     }
     if (workingDay < 0) {
       throw new RangeError("Working days cannot be negative")
     }
+    this.name = name
+    this.lastName = lastName
+    this.workingDay = workingDay
+    this.salary = salary
   }
   getFullName() {
-    return this.name + " " + this.lastName
+    return `${this.name} ${this.lastName}`
   }
   getSalary() {
     return this.salary * this.workingDay
   }
   getPremium() {
     if (this.workingDay > 20) {
-      let procent = (this.salary * 25) / 100
-      this.salary = Math.round(this.salary + procent) 
+      const premium = Math.round(this.salary * 1.25)
+      return  premium
     }
     return this.salary
   }
